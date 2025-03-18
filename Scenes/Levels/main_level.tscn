@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://0bspu7lqcxu5"]
+
+[ext_resource type="PackedScene" uid="uid://b1xco24q27axb" path="res://Scenes/Objects/Player.tscn" id="1_s08vq"]
+[ext_resource type="Texture2D" uid="uid://cgvv1c6qdcuyl" path="res://Assets/Placeholders/city_background.jpg" id="2_vl75t"]
+[ext_resource type="Texture2D" uid="uid://cd3n3hl3pq8n6" path="res://Assets/Placeholders/kitchen_background.jpg" id="3_soxo8"]
+[ext_resource type="Texture2D" uid="uid://cqss0xbadlbu3" path="res://Assets/Placeholders/salon_background.jpg" id="4_hmlj4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o3eya"]
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_s08vq")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, -100)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="FloorCollider" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_o3eya")
+
+[node name="FloorSegments" type="Node" parent="Floor"]
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="CityBackground" type="Sprite2D" parent="Backgrounds"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(787.25, -198.625)
+scale = Vector2(0.992969, 0.912559)
+texture = ExtResource("2_vl75t")
+
+[node name="KitchenBackground" type="Sprite2D" parent="Backgrounds"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(169, -200)
+scale = Vector2(0.591309, 0.568397)
+texture = ExtResource("3_soxo8")
+
+[node name="KitchenBackground2" type="Sprite2D" parent="Backgrounds"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(1366, -194)
+scale = Vector2(0.2102, 0.226455)
+texture = ExtResource("4_hmlj4")
