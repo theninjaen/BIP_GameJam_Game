@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+@onready var floor_ray: RayCast2D = $RayCast2D
+
+
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 
