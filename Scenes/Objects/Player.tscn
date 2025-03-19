@@ -5,9 +5,11 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t86h6"]
 radius = 52.0
-height = 188.0
+height = 186.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+floor_snap_length = 32.0
 script = ExtResource("1_t86h6")
 
 [node name="PlaceholderSprite" type="Sprite2D" parent="."]
@@ -15,5 +17,9 @@ position = Vector2(0, -96)
 texture = ExtResource("2_t86h6")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -97)
+position = Vector2(0, -94)
 shape = SubResource("CapsuleShape2D_t86h6")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -1)
+target_position = Vector2(0, 7)
