@@ -139,3 +139,7 @@ scene_to_load = ExtResource("13_g5xey")
 position = Vector2(3.8147e-06, 0)
 shape = SubResource("RectangleShape2D_5iftk")
 debug_color = Color(0.551771, 0.563174, 3.85046e-07, 0.42)
+
+[node name="Adio sources" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Adio sources"]
