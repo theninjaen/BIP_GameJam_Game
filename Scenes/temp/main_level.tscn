@@ -1,65 +1,156 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=19 format=3]
 
-[ext_resource type="PackedScene" path="res://Scenes/Objects/Player.tscn" id="1_0iv5n"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="2_5nil5"]
-[ext_resource type="Texture2D" path="res://Assets/Placeholders/city_background.jpg" id="3_vjlob"]
-[ext_resource type="Texture2D" path="res://Assets/Placeholders/kitchen_background.jpg" id="4_tcl05"]
-[ext_resource type="Texture2D" path="res://Assets/Placeholders/salon_background.jpg" id="5_rex6b"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/interactable.tscn" id="6_epv2u"]
-[ext_resource type="Script" path="res://Scripts/interactable.gd" id="7_5adwf"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/test.tscn" id="8_t7yk8"]
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_t7yk8"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/Player.tscn" id="2_yenpu"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="3_xwp5f"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/city_background.jpg" id="4_hcy31"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/street_cafe_background.jpg" id="5_0su3h"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/kitchen_background.jpg" id="6_mpq7u"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/stairs_background.jpg" id="7_bwn4b"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/salon_background.jpg" id="8_pbuhg"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/kitchenette_background.jpg" id="9_albbj"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/interactable.tscn" id="10_jfgli"]
+[ext_resource type="Script" path="res://Scripts/interactable.gd" id="11_b7y2n"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/coffee_level.tscn" id="12_q6kxg"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/little_man.png" id="13_wknjf"]
+[ext_resource type="Texture2D" path="res://Assets/Placeholders/cat.png" id="14_q3mqj"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/feed_cat_level.tscn" id="15_iuk6m"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o3eya"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tf6wi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmlj4"]
-size = Vector2(222, 205)
+size = Vector2(218, 291.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iftk"]
+size = Vector2(170, 208)
 
 [node name="MainLevel" type="Node2D"]
+script = ExtResource("1_t7yk8")
+interactions = {
+"cat": NodePath("CatInteraction/Sprite2D/Interactable"),
+"coffee": NodePath("CoffeeInteraction/CoffeeInteractionArea")
+}
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["player"] instance=ExtResource("1_0iv5n")]
-position = Vector2(745, 2.9987)
-script = ExtResource("2_5nil5")
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"] instance=ExtResource("2_yenpu")]
+z_index = 5
+position = Vector2(2660.77, 0.983211)
+collision_layer = 2
+floor_snap_length = 32.0
+script = ExtResource("3_xwp5f")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -100)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
-[node name="FloorCollider" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape2D_o3eya")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(-68, -171)
+polygon = PackedVector2Array(551, 172, 226, -66, -605, -63, -613, 209, 3007, 204, 3012, 171, 2019, 171, 1998, 185, 1214, 186, 1199, 170)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-563, -368)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_tf6wi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(2853, -126)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_tf6wi")
 
 [node name="Backgrounds" type="Node" parent="."]
 
 [node name="CityBackground" type="Sprite2D" parent="Backgrounds"]
 z_index = -1
 texture_repeat = 2
-position = Vector2(787.25, -198.625)
-scale = Vector2(0.992969, 0.912559)
-texture = ExtResource("3_vjlob")
+position = Vector2(1543, -148)
+scale = Vector2(1.28867, 0.912559)
+texture = ExtResource("4_hcy31")
+
+[node name="CafeBackground" type="Sprite2D" parent="Backgrounds"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(805, -164)
+scale = Vector2(1.31234, 1.13196)
+texture = ExtResource("5_0su3h")
 
 [node name="KitchenBackground" type="Sprite2D" parent="Backgrounds"]
 z_index = -1
 texture_repeat = 2
-position = Vector2(169, -200)
-scale = Vector2(0.591309, 0.568397)
-texture = ExtResource("4_tcl05")
+position = Vector2(-219, -400)
+scale = Vector2(0.735108, 0.650231)
+texture = ExtResource("6_mpq7u")
 
-[node name="KitchenBackground2" type="Sprite2D" parent="Backgrounds"]
+[node name="StairsBackground" type="Sprite2D" parent="Backgrounds"]
 z_index = -1
 texture_repeat = 2
-position = Vector2(1366, -194)
+position = Vector2(312, -132)
+scale = Vector2(1.10612, 0.934593)
+texture = ExtResource("7_bwn4b")
+
+[node name="SalonBackground" type="Sprite2D" parent="Backgrounds"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(2209, -169)
 scale = Vector2(0.2102, 0.226455)
-texture = ExtResource("5_rex6b")
+texture = ExtResource("8_pbuhg")
 
-[node name="Interactable" type="Area2D" parent="." instance=ExtResource("6_epv2u")]
-position = Vector2(827, -146)
-script = ExtResource("7_5adwf")
-scene_to_load = ExtResource("8_t7yk8")
+[node name="KitchenetteBackground" type="Sprite2D" parent="Backgrounds"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(2673, -191)
+scale = Vector2(0.8011, 0.763228)
+texture = ExtResource("9_albbj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-5, 42.5)
+[node name="CoffeeInteraction" type="Node" parent="."]
+
+[node name="CoffeeInteractionArea" type="Area2D" parent="CoffeeInteraction" instance=ExtResource("10_jfgli")]
+position = Vector2(846, -149)
+collision_mask = 2
+script = ExtResource("11_b7y2n")
+scene_to_load = ExtResource("12_q6kxg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoffeeInteraction/CoffeeInteractionArea"]
+position = Vector2(1806, -7.25)
 shape = SubResource("RectangleShape2D_hmlj4")
-debug_color = Color(0.989415, 0, 0.290723, 0.42)
+debug_color = Color(0.566948, 0.169089, 0.0596887, 0.42)
 
-[connection signal="body_entered" from="Interactable" to="Interactable" method="_on_body_entered"]
-[connection signal="body_exited" from="Interactable" to="Interactable" method="_on_body_exited"]
+[node name="AngryDude" type="Sprite2D" parent="CoffeeInteraction"]
+z_index = 1
+position = Vector2(2379, -128)
+scale = Vector2(0.379167, 0.379167)
+texture = ExtResource("13_wknjf")
+
+[node name="HisMessage" type="Label" parent="CoffeeInteraction/AngryDude"]
+offset_left = -345.495
+offset_top = -316.484
+offset_right = 495.505
+offset_bottom = -220.484
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "I Wamt COFFEEEEEEE!!!!!!!"
+
+[node name="CatInteraction" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CatInteraction"]
+position = Vector2(-42, -388)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_q3mqj")
+
+[node name="Interactable" type="Area2D" parent="CatInteraction/Sprite2D" instance=ExtResource("10_jfgli")]
+process_mode = 4
+position = Vector2(-22, 94)
+scale = Vector2(2, 2)
+collision_mask = 2
+script = ExtResource("11_b7y2n")
+scene_to_load = ExtResource("15_iuk6m")
+
+[node name="FeedCatArea" type="CollisionShape2D" parent="CatInteraction/Sprite2D/Interactable"]
+position = Vector2(3.8147e-06, 0)
+shape = SubResource("RectangleShape2D_5iftk")
+debug_color = Color(0.551771, 0.563174, 3.85046e-07, 0.42)
+
+[connection signal="body_entered" from="CoffeeInteraction/CoffeeInteractionArea" to="CoffeeInteraction/CoffeeInteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="CoffeeInteraction/CoffeeInteractionArea" to="CoffeeInteraction/CoffeeInteractionArea" method="_on_body_exited"]
+[connection signal="body_entered" from="CatInteraction/Sprite2D/Interactable" to="CatInteraction/Sprite2D/Interactable" method="_on_body_entered"]
+[connection signal="body_exited" from="CatInteraction/Sprite2D/Interactable" to="CatInteraction/Sprite2D/Interactable" method="_on_body_exited"]

@@ -1,35 +1,37 @@
-[gd_scene load_steps=12 format=3 uid="uid://0bspu7lqcxu5"]
+[gd_scene load_steps=17 format=3 uid="uid://0bspu7lqcxu5"]
 
 [ext_resource type="PackedScene" uid="uid://b1xco24q27axb" path="res://Scenes/Objects/Player.tscn" id="1_s08vq"]
+[ext_resource type="Script" uid="uid://82j8qkrgurk5" path="res://Scripts/level_manager.gd" id="1_tf6wi"]
 [ext_resource type="Texture2D" uid="uid://cgvv1c6qdcuyl" path="res://Assets/Placeholders/city_background.jpg" id="2_vl75t"]
 [ext_resource type="Texture2D" uid="uid://cdpi3r2fousix" path="res://Assets/Placeholders/street_cafe_background.jpg" id="3_5bh32"]
 [ext_resource type="Texture2D" uid="uid://cd3n3hl3pq8n6" path="res://Assets/Placeholders/kitchen_background.jpg" id="3_soxo8"]
 [ext_resource type="Texture2D" uid="uid://cqss0xbadlbu3" path="res://Assets/Placeholders/salon_background.jpg" id="4_hmlj4"]
 [ext_resource type="PackedScene" uid="uid://5yemxuxp8pn8" path="res://Scenes/Objects/interactable.tscn" id="5_soxo8"]
 [ext_resource type="Texture2D" uid="uid://bfjaomwet1j61" path="res://Assets/Placeholders/stairs_background.jpg" id="5_tf6wi"]
-[ext_resource type="Script" uid="uid://sd2pxwnecvgu" path="res://Scripts/leave_pov_scene.gd" id="6_hmlj4"]
 [ext_resource type="Texture2D" uid="uid://nupf6feopn0e" path="res://Assets/Placeholders/kitchenette_background.jpg" id="7_arl3j"]
+[ext_resource type="PackedScene" uid="uid://onkx4wr4sch" path="res://Scenes/Levels/coffee_level.tscn" id="10_arl3j"]
+[ext_resource type="Texture2D" uid="uid://bpluivynod8b7" path="res://Assets/Placeholders/little_man.png" id="11_arl3j"]
+[ext_resource type="Texture2D" uid="uid://br5cxkwdjyjyl" path="res://Assets/Placeholders/cat.png" id="12_5iftk"]
+[ext_resource type="PackedScene" uid="uid://dt5irfme1ke0n" path="res://Scenes/Levels/feed_cat_level.tscn" id="13_g5xey"]
 
-[sub_resource type="PackedScene" id="PackedScene_24ccb"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(1073741828, 1073741827, 23, 22, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("Node2D", "Node2D", "script", "Camera2D", "Camera2D", "Label", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment", "Button", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "_on_button_button_down", "button_down"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("Button")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 0, 0, 1073741825, 0, 6, 5, -1, 8, 7, 1, 8, 2, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 0, 1073741826, 0, 16, 15, -1, 5, 17, 9, 18, 10, 19, 11, 20, 12, 21, 13, 0),
-"variants": [ExtResource("6_hmlj4"), -463.0, -257.0, 501.0, 272.0, 100, "IT WORKED", 1, 1, -78.0, 84.0, 95.0, 166.0, "Click to return"],
-"version": 3
-}
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tf6wi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmlj4"]
-size = Vector2(222, 205)
+size = Vector2(218, 291.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iftk"]
+size = Vector2(170, 208)
 
 [node name="MainLevel" type="Node2D"]
+script = ExtResource("1_tf6wi")
+interactions = {
+"cat": NodePath("CatInteraction/Sprite2D/Interactable"),
+"coffee": NodePath("CoffeeInteraction/CoffeeInteractionArea")
+}
 
 [node name="Player" parent="." instance=ExtResource("1_s08vq")]
-position = Vector2(-437, -322)
+z_index = 5
+position = Vector2(-436, -235)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -100)
@@ -38,7 +40,17 @@ position = Vector2(0, -100)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(-68, -171)
-polygon = PackedVector2Array(551, 172, 226, -66, -522, -66, -523, -491, -613, -493, -613, 209, 3007, 204, 3023, -320, 2937, -320, 2939, 169, 2019, 171, 1998, 185, 1214, 186, 1199, 170)
+polygon = PackedVector2Array(551, 172, 226, -66, -605, -63, -613, 209, 3007, 204, 3012, 171, 2019, 171, 1998, 185, 1214, 186, 1199, 170)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-563, -368)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_tf6wi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(2853, -126)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_tf6wi")
 
 [node name="Backgrounds" type="Node" parent="."]
 
@@ -59,7 +71,7 @@ texture = ExtResource("3_5bh32")
 [node name="KitchenBackground" type="Sprite2D" parent="Backgrounds"]
 z_index = -1
 texture_repeat = 2
-position = Vector2(-218, -382)
+position = Vector2(-219, -400)
 scale = Vector2(0.735108, 0.650231)
 texture = ExtResource("3_soxo8")
 
@@ -84,11 +96,46 @@ position = Vector2(2673, -191)
 scale = Vector2(0.8011, 0.763228)
 texture = ExtResource("7_arl3j")
 
-[node name="Interactable" parent="." instance=ExtResource("5_soxo8")]
-position = Vector2(827, -146)
-scene_to_load = SubResource("PackedScene_24ccb")
+[node name="CoffeeInteraction" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(446, -444)
+[node name="CoffeeInteractionArea" parent="CoffeeInteraction" instance=ExtResource("5_soxo8")]
+position = Vector2(846, -149)
+scene_to_load = ExtResource("10_arl3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoffeeInteraction/CoffeeInteractionArea"]
+position = Vector2(1806, -7.25)
 shape = SubResource("RectangleShape2D_hmlj4")
-debug_color = Color(0.989415, 0, 0.290723, 0.42)
+debug_color = Color(0.566948, 0.169089, 0.0596887, 0.42)
+
+[node name="AngryDude" type="Sprite2D" parent="CoffeeInteraction"]
+z_index = 1
+position = Vector2(2379, -128)
+scale = Vector2(0.379167, 0.379167)
+texture = ExtResource("11_arl3j")
+
+[node name="HisMessage" type="Label" parent="CoffeeInteraction/AngryDude"]
+offset_left = -345.495
+offset_top = -316.484
+offset_right = 495.505
+offset_bottom = -220.484
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "I Wamt COFFEEEEEEE!!!!!!!"
+
+[node name="CatInteraction" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CatInteraction"]
+position = Vector2(-42, -388)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_5iftk")
+
+[node name="Interactable" parent="CatInteraction/Sprite2D" instance=ExtResource("5_soxo8")]
+position = Vector2(-22, 94)
+scale = Vector2(2, 2)
+scene_to_load = ExtResource("13_g5xey")
+
+[node name="FeedCatArea" type="CollisionShape2D" parent="CatInteraction/Sprite2D/Interactable"]
+position = Vector2(3.8147e-06, 0)
+shape = SubResource("RectangleShape2D_5iftk")
+debug_color = Color(0.551771, 0.563174, 3.85046e-07, 0.42)

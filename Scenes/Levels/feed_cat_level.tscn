@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt5irfme1ke0n"]
+
+[ext_resource type="Texture2D" uid="uid://bx402phpmommd" path="res://Assets/Placeholders/table_background.jpg" id="1_1ossm"]
+[ext_resource type="Texture2D" uid="uid://tjr15dtxukap" path="res://Assets/Placeholders/cat_bowl.png" id="2_ak45t"]
+[ext_resource type="Script" uid="uid://ccd2exv2np63g" path="res://Scripts/cat_bowl.gd" id="3_1ossm"]
+[ext_resource type="Texture2D" uid="uid://dfv71qbmf0lmm" path="res://Assets/Placeholders/cat_food.png" id="4_1ossm"]
+[ext_resource type="Script" uid="uid://neaqq0grjkyh" path="res://Scripts/cat_food_box.gd" id="5_1ossm"]
+[ext_resource type="PackedScene" uid="uid://ba53r1lrv0a0j" path="res://Scenes/Objects/cat_food_snack.tscn" id="5_irwng"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxog8"]
+radius = 245.181
+height = 797.036
+
+[node name="CoffeeLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Table" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(2.29182, 1.90278)
+texture = ExtResource("1_1ossm")
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="CatBowl" type="Sprite2D" parent="Objects"]
+position = Vector2(-356, 10)
+scale = Vector2(0.245911, 0.261032)
+texture = ExtResource("2_ak45t")
+script = ExtResource("3_1ossm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Objects/CatBowl"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/CatBowl/StaticBody2D"]
+polygon = PackedVector2Array(170.794, 164.731, 329.388, 49.8023, 353.787, -84.2808, 317.188, -233.688, 357.853, -229.857, 402.585, -88.1117, 292.789, 302.645, -280.589, 306.476, -402.585, -68.957, -365.986, -229.857, -317.188, -222.195, -349.72, -72.788, -280.589, 68.957, -174.86, 168.562)
+
+[node name="Area2D" type="Area2D" parent="Objects/CatBowl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/CatBowl/Area2D"]
+position = Vector2(0, -65.1261)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xxog8")
+
+[node name="CatFoodBox" type="Sprite2D" parent="Objects"]
+z_index = 1
+position = Vector2(245.75, 8.27005)
+scale = Vector2(0.446168, 0.446168)
+texture = ExtResource("4_1ossm")
+script = ExtResource("5_1ossm")
+
+[node name="AnimationBody2D" type="AnimatableBody2D" parent="Objects/CatFoodBox"]
+sync_to_physics = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Objects/CatFoodBox/AnimationBody2D"]
+polygon = PackedVector2Array(244.863, 378.176, -241.501, 382.659, -239.26, -379.386, -219.088, -379.386, -225.812, 362.487, 222.45, 358.004, 217.967, -381.628, 240.38, -381.628)
+
+[node name="Snacks" type="Node" parent="Objects"]
+
+[node name="CatFoodSnack" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(261, 109)
+rotation = -3.0456
+
+[node name="CatFoodSnack2" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(293, 53)
+rotation = 1.51146
+
+[node name="CatFoodSnack3" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(234, 54)
+rotation = -0.218166
+
+[node name="CatFoodSnack4" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(183, 40)
+rotation = -1.80816
+
+[node name="CatFoodSnack5" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(313, 7)
+rotation = -1.0472
+
+[node name="CatFoodSnack6" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(251, -1)
+rotation = -1.14319
+
+[node name="CatFoodSnack7" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(316, 142)
+rotation = -0.760964
+
+[node name="CatFoodSnack8" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(195, -8)
+rotation = -1.23744
+
+[node name="CatFoodSnack9" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(292, -52)
+rotation = 1.42768
+
+[node name="CatFoodSnack10" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(233, -65)
+rotation = -0.174533
+
+[node name="CatFoodSnack11" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(180, -68)
+rotation = 2.85536
+
+[node name="CatFoodSnack12" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(295, -119)
+rotation = 1.80816
+
+[node name="CatFoodSnack13" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(235, -122)
+rotation = -2.19039
+
+[node name="CatFoodSnack14" parent="Objects/Snacks" groups=["snacks"] instance=ExtResource("5_irwng")]
+position = Vector2(176, -123)
+rotation = 1.33343
+
+[node name="Button" type="Button" parent="."]
+z_index = 1
+offset_left = 284.0
+offset_top = 198.0
+offset_right = 556.0
+offset_bottom = 309.0
+text = "Continue"
+
+[connection signal="body_entered" from="Objects/CatBowl/Area2D" to="Objects/CatBowl" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Objects/CatBowl/Area2D" to="Objects/CatBowl" method="_on_area_2d_body_exited"]
+[connection signal="button_down" from="Button" to="Objects/CatBowl" method="_on_button_button_down"]

@@ -10,7 +10,6 @@ var _is_player_inside: bool = false
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
-	print("inside")
 	_is_player_inside = true
 
 

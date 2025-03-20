@@ -4,6 +4,7 @@ class_name Pickup
 
 var is_sprite_clicked: bool = false
 var position_delta := Vector2(0, 0)
+var origin: Vector2
 
 func pick_up():
 	if Input.is_action_just_pressed("mouse_click"):
@@ -16,3 +17,6 @@ func pick_up():
 	
 	if Input.is_action_just_released("mouse_click"):
 		is_sprite_clicked = false
+		rotation = 0
+		if origin:
+			position = origin
