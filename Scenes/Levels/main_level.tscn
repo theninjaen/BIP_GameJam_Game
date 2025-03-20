@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://0bspu7lqcxu5"]
+[gd_scene load_steps=20 format=3 uid="uid://0bspu7lqcxu5"]
 
-[ext_resource type="PackedScene" uid="uid://b1xco24q27axb" path="res://Scenes/Objects/Player.tscn" id="1_s08vq"]
+[ext_resource type="PackedScene" uid="uid://b1xco24q27axb" path="res://Scenes/Objects/player.tscn" id="1_s08vq"]
 [ext_resource type="Script" uid="uid://82j8qkrgurk5" path="res://Scripts/level_manager.gd" id="1_tf6wi"]
 [ext_resource type="Texture2D" uid="uid://cgvv1c6qdcuyl" path="res://Assets/Placeholders/city_background.jpg" id="2_vl75t"]
 [ext_resource type="Texture2D" uid="uid://cdpi3r2fousix" path="res://Assets/Placeholders/street_cafe_background.jpg" id="3_5bh32"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bfjaomwet1j61" path="res://Assets/Placeholders/stairs_background.jpg" id="5_tf6wi"]
 [ext_resource type="Texture2D" uid="uid://nupf6feopn0e" path="res://Assets/Placeholders/kitchenette_background.jpg" id="7_arl3j"]
 [ext_resource type="PackedScene" uid="uid://onkx4wr4sch" path="res://Scenes/Levels/coffee_level.tscn" id="10_arl3j"]
-[ext_resource type="Texture2D" uid="uid://bpluivynod8b7" path="res://Assets/Placeholders/little_man.png" id="11_arl3j"]
+[ext_resource type="Texture2D" uid="uid://5fou0nlywd7c" path="res://Assets/customer.png" id="11_g5xey"]
 [ext_resource type="Texture2D" uid="uid://br5cxkwdjyjyl" path="res://Assets/Placeholders/cat.png" id="12_5iftk"]
 [ext_resource type="PackedScene" uid="uid://dt5irfme1ke0n" path="res://Scenes/Levels/feed_cat_level.tscn" id="13_g5xey"]
 
@@ -18,6 +18,28 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmlj4"]
 size = Vector2(218, 291.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omwgp"]
+atlas = ExtResource("11_g5xey")
+region = Rect2(0, 0, 128, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8io8c"]
+atlas = ExtResource("11_g5xey")
+region = Rect2(128, 0, 128, 189)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5l35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omwgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8io8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iftk"]
 size = Vector2(170, 208)
@@ -107,25 +129,28 @@ position = Vector2(1806, -7.25)
 shape = SubResource("RectangleShape2D_hmlj4")
 debug_color = Color(0.566948, 0.169089, 0.0596887, 0.42)
 
+[node name="AngryDude" type="AnimatedSprite2D" parent="CoffeeInteraction"]
+z_index = 1
+position = Vector2(2375, -118)
+sprite_frames = SubResource("SpriteFrames_c5l35")
+autoplay = "default"
+frame_progress = 0.810864
+
+[node name="HisMessage" type="Label" parent="CoffeeInteraction/AngryDude"]
+offset_left = -533.0
+offset_top = -145.0
+offset_right = -83.0
+offset_bottom = -49.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 35
+text = "I Wamt COFFEEEEEEE!!!!!!!"
+
 [node name="Adio sources" type="Node" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Adio sources"]
 
-[node name="AngryDude" type="Sprite2D" parent="CoffeeInteraction"]
-z_index = 1
-position = Vector2(2379, -128)
-scale = Vector2(0.379167, 0.379167)
-texture = ExtResource("11_arl3j")
-
-[node name="HisMessage" type="Label" parent="CoffeeInteraction/AngryDude"]
-offset_left = -345.495
-offset_top = -316.484
-offset_right = 495.505
-offset_bottom = -220.484
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 70
-text = "I Wamt COFFEEEEEEE!!!!!!!"
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Adio sources"]
 
 [node name="CatInteraction" type="Node" parent="."]
 
@@ -144,6 +169,4 @@ position = Vector2(3.8147e-06, 0)
 shape = SubResource("RectangleShape2D_5iftk")
 debug_color = Color(0.551771, 0.563174, 3.85046e-07, 0.42)
 
-[node name="Adio sources" type="Node" parent="."]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Adio sources"]
+[node name="Adio sources2" type="Node" parent="."]

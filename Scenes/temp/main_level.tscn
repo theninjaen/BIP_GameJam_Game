@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=22 format=3]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_t7yk8"]
-[ext_resource type="PackedScene" path="res://Scenes/Objects/Player.tscn" id="2_yenpu"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/player.tscn" id="2_yenpu"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="3_xwp5f"]
 [ext_resource type="Texture2D" path="res://Assets/Placeholders/city_background.jpg" id="4_hcy31"]
 [ext_resource type="Texture2D" path="res://Assets/Placeholders/street_cafe_background.jpg" id="5_0su3h"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Objects/interactable.tscn" id="10_jfgli"]
 [ext_resource type="Script" path="res://Scripts/interactable.gd" id="11_b7y2n"]
 [ext_resource type="PackedScene" path="res://Scenes/Levels/coffee_level.tscn" id="12_q6kxg"]
-[ext_resource type="Texture2D" path="res://Assets/Placeholders/little_man.png" id="13_wknjf"]
+[ext_resource type="Texture2D" path="res://Assets/customer.png" id="13_wknjf"]
 [ext_resource type="Texture2D" path="res://Assets/Placeholders/cat.png" id="14_q3mqj"]
 [ext_resource type="PackedScene" path="res://Scenes/Levels/feed_cat_level.tscn" id="15_iuk6m"]
 
@@ -20,6 +20,28 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmlj4"]
 size = Vector2(218, 291.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omwgp"]
+atlas = ExtResource("13_wknjf")
+region = Rect2(0, 0, 128, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8io8c"]
+atlas = ExtResource("13_wknjf")
+region = Rect2(128, 0, 128, 189)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5l35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omwgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8io8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iftk"]
 size = Vector2(170, 208)
@@ -33,7 +55,7 @@ interactions = {
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"] instance=ExtResource("2_yenpu")]
 z_index = 5
-position = Vector2(2660.77, 0.983211)
+position = Vector2(-56.0102, -235.321)
 collision_layer = 2
 floor_snap_length = 32.0
 script = ExtResource("3_xwp5f")
@@ -114,21 +136,28 @@ position = Vector2(1806, -7.25)
 shape = SubResource("RectangleShape2D_hmlj4")
 debug_color = Color(0.566948, 0.169089, 0.0596887, 0.42)
 
-[node name="AngryDude" type="Sprite2D" parent="CoffeeInteraction"]
+[node name="AngryDude" type="AnimatedSprite2D" parent="CoffeeInteraction"]
 z_index = 1
-position = Vector2(2379, -128)
-scale = Vector2(0.379167, 0.379167)
-texture = ExtResource("13_wknjf")
+position = Vector2(2375, -118)
+sprite_frames = SubResource("SpriteFrames_c5l35")
+autoplay = "default"
+frame_progress = 0.894196
 
 [node name="HisMessage" type="Label" parent="CoffeeInteraction/AngryDude"]
-offset_left = -345.495
-offset_top = -316.484
-offset_right = 495.505
-offset_bottom = -220.484
+offset_left = -533.0
+offset_top = -145.0
+offset_right = -83.0
+offset_bottom = -49.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 35
 text = "I Wamt COFFEEEEEEE!!!!!!!"
+
+[node name="Adio sources" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Adio sources"]
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Adio sources"]
 
 [node name="CatInteraction" type="Node" parent="."]
 
@@ -138,7 +167,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_q3mqj")
 
 [node name="Interactable" type="Area2D" parent="CatInteraction/Sprite2D" instance=ExtResource("10_jfgli")]
-process_mode = 4
 position = Vector2(-22, 94)
 scale = Vector2(2, 2)
 collision_mask = 2
@@ -149,6 +177,8 @@ scene_to_load = ExtResource("15_iuk6m")
 position = Vector2(3.8147e-06, 0)
 shape = SubResource("RectangleShape2D_5iftk")
 debug_color = Color(0.551771, 0.563174, 3.85046e-07, 0.42)
+
+[node name="Adio sources2" type="Node" parent="."]
 
 [connection signal="body_entered" from="CoffeeInteraction/CoffeeInteractionArea" to="CoffeeInteraction/CoffeeInteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="CoffeeInteraction/CoffeeInteractionArea" to="CoffeeInteraction/CoffeeInteractionArea" method="_on_body_exited"]
