@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chd3gjuywq23x"
+path="res://.godot/imported/light traffic.wav-6d3a3ed96021aaf953c839084b23af9a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/General/light traffic.wav"
+dest_files=["res://.godot/imported/light traffic.wav-6d3a3ed96021aaf953c839084b23af9a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
