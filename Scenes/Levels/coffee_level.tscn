@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bx402phpmommd" path="res://Assets/Placeholders/table_background.jpg" id="1_plh7v"]
 [ext_resource type="Texture2D" uid="uid://cu6wd2kcl501c" path="res://Assets/sugar.png" id="2_auc6o"]
-[ext_resource type="Texture2D" uid="uid://4e2qiohr37it" path="res://Assets/Placeholders/close-up-view-of-a-full-white-coffee-cup-free-png.png" id="3_plh7v"]
 [ext_resource type="Script" uid="uid://75qw6v7fn14v" path="res://Scripts/sugar.gd" id="3_rcuru"]
 [ext_resource type="Texture2D" uid="uid://dw3yp0mm4pn8v" path="res://Assets/salt.png" id="4_qk04m"]
+[ext_resource type="Texture2D" uid="uid://dp6y2p7hecp3v" path="res://Assets/cup.png" id="5_qk04m"]
 [ext_resource type="Script" uid="uid://ev4yk8aadn05" path="res://Scripts/coffee.gd" id="6_qk04m"]
 
 [node name="CoffeeLevel" type="Node2D"]
@@ -52,7 +52,7 @@ emission_rect_extents = Vector2(120, 1)
 [node name="Coffee" type="Sprite2D" parent="Objects"]
 position = Vector2(-288, 39)
 scale = Vector2(0.245911, 0.204167)
-texture = ExtResource("3_plh7v")
+texture = ExtResource("5_qk04m")
 script = ExtResource("6_qk04m")
 
 [node name="Target" type="Node2D" parent="Objects/Coffee"]
