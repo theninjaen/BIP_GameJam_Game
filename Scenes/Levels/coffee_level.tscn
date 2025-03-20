@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://onkx4wr4sch"]
+
+[ext_resource type="Texture2D" uid="uid://bx402phpmommd" path="res://Assets/Placeholders/table_background.jpg" id="1_plh7v"]
+[ext_resource type="Texture2D" uid="uid://cu6wd2kcl501c" path="res://Assets/sugar.png" id="2_auc6o"]
+[ext_resource type="Script" uid="uid://75qw6v7fn14v" path="res://Scripts/sugar.gd" id="3_rcuru"]
+[ext_resource type="Texture2D" uid="uid://dw3yp0mm4pn8v" path="res://Assets/salt.png" id="4_qk04m"]
+[ext_resource type="Texture2D" uid="uid://dp6y2p7hecp3v" path="res://Assets/cup.png" id="5_qk04m"]
+[ext_resource type="Script" uid="uid://ev4yk8aadn05" path="res://Scripts/coffee.gd" id="6_qk04m"]
+
+[node name="CoffeeLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Table" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(2.29182, 1.90278)
+texture = ExtResource("1_plh7v")
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Sugar" type="Sprite2D" parent="Objects" node_paths=PackedStringArray("coffee")]
+position = Vector2(288, 27)
+scale = Vector2(0.233789, 0.194102)
+texture = ExtResource("2_auc6o")
+script = ExtResource("3_rcuru")
+coffee = NodePath("../Coffee")
+content = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Objects/Sugar"]
+position = Vector2(-4.27736, -216.381)
+emitting = false
+amount = 100
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(120, 1)
+
+[node name="Salt" type="Sprite2D" parent="Objects" node_paths=PackedStringArray("coffee")]
+position = Vector2(137, 29)
+scale = Vector2(0.233789, 0.194102)
+texture = ExtResource("4_qk04m")
+script = ExtResource("3_rcuru")
+coffee = NodePath("../Coffee")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Objects/Salt"]
+position = Vector2(4.27736, -211.229)
+emitting = false
+amount = 100
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(120, 1)
+
+[node name="Coffee" type="Sprite2D" parent="Objects"]
+position = Vector2(-288, 39)
+scale = Vector2(0.245911, 0.204167)
+texture = ExtResource("5_qk04m")
+script = ExtResource("6_qk04m")
+
+[node name="Target" type="Node2D" parent="Objects/Coffee"]
+position = Vector2(-44.7316, -778.774)

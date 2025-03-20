@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba53r1lrv0a0j"]
+
+[ext_resource type="Texture2D" uid="uid://cpgdbgvnead5y" path="res://Assets/Placeholders/cat_snack.png" id="1_1egjy"]
+[ext_resource type="Script" uid="uid://b3vf8fnoblcq7" path="res://Scripts/cat_food_snack.gd" id="2_4ytte"]
+
+[node name="CatFoodSnack" type="RigidBody2D"]
+mass = 0.01
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1egjy")
+script = ExtResource("2_4ytte")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, 4, -18, -25, 1, -13, 19, -24, 19, 5, 11, 18, 1, 20, -14, 16)
