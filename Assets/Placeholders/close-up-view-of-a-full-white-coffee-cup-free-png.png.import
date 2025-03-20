@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch0vmtm5d23m0"
-path="res://.godot/imported/player.png-5865e44ec904626e2b9235b03c31b0f1.ctex"
+uid="uid://4e2qiohr37it"
+path="res://.godot/imported/close-up-view-of-a-full-white-coffee-cup-free-png.png-f0d19017f55d5e699f3387f14e0430b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Placeholders/player.png"
-dest_files=["res://.godot/imported/player.png-5865e44ec904626e2b9235b03c31b0f1.ctex"]
+source_file="res://Assets/Placeholders/close-up-view-of-a-full-white-coffee-cup-free-png.png"
+dest_files=["res://.godot/imported/close-up-view-of-a-full-white-coffee-cup-free-png.png-f0d19017f55d5e699f3387f14e0430b0.ctex"]
 
 [params]
 

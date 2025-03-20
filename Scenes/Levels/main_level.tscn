@@ -89,6 +89,6 @@ position = Vector2(827, -146)
 scene_to_load = SubResource("PackedScene_24ccb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(1180, -351)
+position = Vector2(446, -444)
 shape = SubResource("RectangleShape2D_hmlj4")
 debug_color = Color(0.989415, 0, 0.290723, 0.42)

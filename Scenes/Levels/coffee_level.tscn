@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://onkx4wr4sch"]
+
+[ext_resource type="Texture2D" uid="uid://bx402phpmommd" path="res://Assets/Placeholders/table_background.jpg" id="1_plh7v"]
+[ext_resource type="Texture2D" uid="uid://reehn4xwya8x" path="res://Assets/Placeholders/salt_shaker.png" id="2_rcuru"]
+[ext_resource type="Texture2D" uid="uid://4e2qiohr37it" path="res://Assets/Placeholders/close-up-view-of-a-full-white-coffee-cup-free-png.png" id="3_plh7v"]
+[ext_resource type="Script" uid="uid://75qw6v7fn14v" path="res://Scripts/sugar.gd" id="3_rcuru"]
+
+[node name="CoffeeLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Table" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(2.29182, 1.90278)
+texture = ExtResource("1_plh7v")
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Sugar" type="Sprite2D" parent="Objects" node_paths=PackedStringArray("target")]
+position = Vector2(404, 35)
+scale = Vector2(0.233789, 0.194102)
+texture = ExtResource("2_rcuru")
+script = ExtResource("3_rcuru")
+target = NodePath("../Coffee/Target")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Objects/Sugar"]
+position = Vector2(4.27736, -355.483)
+emitting = false
+amount = 100
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(120, 1)
+
+[node name="Salt" type="Sprite2D" parent="Objects" node_paths=PackedStringArray("target")]
+position = Vector2(404, 35)
+scale = Vector2(0.233789, 0.194102)
+texture = ExtResource("2_rcuru")
+script = ExtResource("3_rcuru")
+target = NodePath("../Coffee/Target")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Objects/Salt"]
+position = Vector2(4.27736, -355.483)
+emitting = false
+amount = 100
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(120, 1)
+
+[node name="Coffee" type="Sprite2D" parent="Objects"]
+position = Vector2(-288, 39)
+scale = Vector2(0.245911, 0.204167)
+texture = ExtResource("3_plh7v")
+
+[node name="Target" type="Node2D" parent="Objects/Coffee"]
+position = Vector2(-44.7316, -778.774)

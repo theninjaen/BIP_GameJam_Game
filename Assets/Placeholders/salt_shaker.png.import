@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch0vmtm5d23m0"
-path="res://.godot/imported/player.png-5865e44ec904626e2b9235b03c31b0f1.ctex"
+uid="uid://reehn4xwya8x"
+path="res://.godot/imported/salt_shaker.png-7baf258cb5140519e84991bc8de763f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Placeholders/player.png"
-dest_files=["res://.godot/imported/player.png-5865e44ec904626e2b9235b03c31b0f1.ctex"]
+source_file="res://Assets/Placeholders/salt_shaker.png"
+dest_files=["res://.godot/imported/salt_shaker.png-7baf258cb5140519e84991bc8de763f7.ctex"]
 
 [params]
 
