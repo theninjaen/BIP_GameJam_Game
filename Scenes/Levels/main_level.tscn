@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0bspu7lqcxu5"]
+[gd_scene load_steps=14 format=3 uid="uid://0bspu7lqcxu5"]
 
 [ext_resource type="PackedScene" uid="uid://b1xco24q27axb" path="res://Scenes/Objects/Player.tscn" id="1_s08vq"]
 [ext_resource type="Texture2D" uid="uid://cgvv1c6qdcuyl" path="res://Assets/Placeholders/city_background.jpg" id="2_vl75t"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bfjaomwet1j61" path="res://Assets/Placeholders/stairs_background.jpg" id="5_tf6wi"]
 [ext_resource type="Script" uid="uid://sd2pxwnecvgu" path="res://Scripts/leave_pov_scene.gd" id="6_hmlj4"]
 [ext_resource type="Texture2D" uid="uid://nupf6feopn0e" path="res://Assets/Placeholders/kitchenette_background.jpg" id="7_arl3j"]
-[ext_resource type="AudioStream" uid="uid://dfp2yvnlpy16d" path="res://Assets/Sounds/Cafe/rolling-chair.wav" id="10_tf6wi"]
+[ext_resource type="AudioStream" uid="uid://bkxnih54h8w4y" path="res://Assets/Sounds/Cafe/restaurant-ambience-with-classical-music.mp3" id="10_arl3j"]
+[ext_resource type="AudioStream" uid="uid://cxlp4ld3ymcya" path="res://Assets/Sounds/Cafe/child-crying.wav" id="11_5iftk"]
 
 [sub_resource type="PackedScene" id="PackedScene_24ccb"]
 _bundled = {
@@ -98,4 +99,12 @@ debug_color = Color(0.989415, 0, 0.290723, 0.42)
 
 [node name="Cafe BGM" type="AudioStreamPlayer2D" parent="Adio sources"]
 position = Vector2(812, -143)
-stream = ExtResource("10_tf6wi")
+stream = ExtResource("10_arl3j")
+
+[node name="Child crying" type="AudioStreamPlayer2D" parent="Adio sources"]
+position = Vector2(812, -143)
+stream = ExtResource("11_5iftk")
+
+[node name="Child crying2" type="AudioStreamPlayer2D" parent="Adio sources"]
+position = Vector2(812, -143)
+stream = ExtResource("11_5iftk")
